@@ -48,22 +48,20 @@ BOOL keyboardhook_enable(size_t max_onKeyDown_handlers, size_t max_onKeyUp_handl
 
 	if (onKeyDown_handlers_amount > 0)
 	{
-		onKeyDown_handlers = (key_event*)malloc(sizeof(key_event) * onKeyDown_handlers_amount);
+		onKeyDown_handlers = (key_event*)calloc(onKeyDown_handlers_amount, sizeof(key_event));
 		if (onKeyDown_handlers == NULL)
 		{
 			return 1;
 		}
-		memset(onKeyDown_handlers, 0, sizeof(key_event) * onKeyDown_handlers_amount);
 	}
 
 	if (onKeyUp_handlers_amount > 0)
 	{
-		onKeyUp_handlers = (key_event*)malloc(sizeof(key_event) * onKeyUp_handlers_amount);
+		onKeyUp_handlers = (key_event*)calloc(onKeyUp_handlers_amount, sizeof(key_event));
 		if (onKeyUp_handlers == NULL)
 		{
 			return 1;
 		}
-		memset(onKeyUp_handlers, 0, sizeof(key_event) * onKeyUp_handlers_amount);
 	}
 
 	keyboard_hook = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardhook_proc, NULL, 0);
@@ -113,7 +111,7 @@ BOOL keyboardhook_unsubscribe_onKeyDown(key_event handler)
 	{
 		if (onKeyDown_handlers[i] == handler)
 		{
-			onKeyDown_handlers[i] = NULL;
+			onKeyDown_handlers[i] = 0;
 			return 0;
 		}
 	}
@@ -126,7 +124,7 @@ BOOL keyboardhook_unsubscribe_onKeyUp(key_event handler)
 	{
 		if (onKeyUp_handlers[i] == handler)
 		{
-			onKeyUp_handlers[i] = NULL;
+			onKeyUp_handlers[i] = 0;
 			return 0;
 		}
 	}

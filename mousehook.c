@@ -107,43 +107,35 @@ BOOL mousehook_enable(size_t max_onMouseWheel_handlers, size_t max_onMouseMove_h
 
     if (onMouseWheel_handlers_amount > 0)
     {
-        onMouseWheel_handlers = (mousewheel_event*)malloc(sizeof(mousewheel_event) * onMouseWheel_handlers_amount);
+        onMouseWheel_handlers = (mousewheel_event*)calloc(onMouseWheel_handlers_amount, sizeof(mousewheel_event));
         if (onMouseWheel_handlers == NULL)
         {
             return 1;
         }
-
-        memset(onMouseWheel_handlers, 0, sizeof(mousewheel_event) * onMouseWheel_handlers_amount);
     }
     if (onMouseMove_handlers_amount > 0)
     {
-        onMouseMove_handlers = (mousemove_event*)malloc(sizeof(mousemove_event) * onMouseMove_handlers_amount);
+        onMouseMove_handlers = (mousemove_event*)calloc(onMouseMove_handlers_amount, sizeof(mousemove_event));
         if (onMouseMove_handlers == NULL)
         {
             return 1;
         }
-
-        memset(onMouseMove_handlers, 0, sizeof(mousemove_event) * onMouseMove_handlers_amount);
     }
     if (onMouseButtonDown_handlers_amount > 0)
     {
-        onMouseButtonDown_handlers = (mousebutton_event*)malloc(sizeof(mousebutton_event) * onMouseButtonDown_handlers_amount);
+        onMouseButtonDown_handlers = (mousebutton_event*)calloc(onMouseButtonDown_handlers_amount, sizeof(mousebutton_event));
         if (onMouseButtonDown_handlers == NULL)
         {
             return 1;
         }
-
-        memset(onMouseButtonDown_handlers, 0, sizeof(mousebutton_event) * onMouseButtonDown_handlers_amount);
     }
     if (onMouseButtonUp_handlers_amount > 0)
     {
-        onMouseButtonUp_handlers = (mousebutton_event*)malloc(sizeof(mousebutton_event) * onMouseButtonUp_handlers_amount);
+        onMouseButtonUp_handlers = (mousebutton_event*)calloc(onMouseButtonUp_handlers_amount, sizeof(mousebutton_event));
         if (onMouseButtonUp_handlers == NULL)
         {
             return 1;
         }
-
-        memset(onMouseButtonUp_handlers, 0, sizeof(mousebutton_event) * onMouseButtonUp_handlers_amount);
     }
 
     mouse_hook = SetWindowsHookExA(WH_MOUSE_LL, mousehook_proc, NULL, 0);
