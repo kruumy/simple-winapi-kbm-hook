@@ -1,4 +1,4 @@
-## Example Usage
+## Example C Usage
 ```
 #include "keyboardhook.h"
 #include "mousehook.h"
@@ -39,8 +39,42 @@ int main()
 }
 
 ```
-Of course there are more events than just the ones listed above.
-You can also subscribe multiple functions to the same action if you increase the amount to allocate in enable functions.
+## Example C++ Usage 
+Note: More overhead because of use of std::map so you do not need to manually allocate.
+```
+#include "iohook/keyboard.hpp"
+#include "iohook/mouse.hpp"
+
+void OnMouseScroll(int dir)
+{
+   if(dir == 0)
+   {
+      // scroll down
+   }
+   else if(btn == 1)
+   {
+      // scroll up
+   }
+}
+
+void OnKeyUp(int vkCode)
+{
+    // something
+}
+
+int main()
+{
+    iohook::mouse::enable();
+    iohook::mouse::subscribe(iohook::mouse::OnMouseScroll, OnMouseScroll); 
+    
+    iohook::keyboard::subscribe(iohook::keyboard::OnKeyUp, OnKeyUp);
+    
+    iohook::mouse::disable();
+    iohook::mouse::disable();
+}
+
+```
+
 
 
 
