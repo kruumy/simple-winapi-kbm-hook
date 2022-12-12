@@ -70,7 +70,7 @@ int main()
     iohook::keyboard::subscribe(iohook::keyboard::OnKeyUp, OnKeyUp);
     
     iohook::mouse::disable();
-    iohook::mouse::disable();
+    iohook::keyboard::disable();
 }
 
 ```
