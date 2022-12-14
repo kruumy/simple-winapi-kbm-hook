@@ -67,6 +67,7 @@ int main()
     iohook::mouse::enable();
     iohook::mouse::subscribe(iohook::mouse::OnMouseScroll, OnMouseScroll); 
     
+    iohook::keyboard::enable();
     iohook::keyboard::subscribe(iohook::keyboard::OnKeyUp, OnKeyUp);
     
     iohook::mouse::disable();
