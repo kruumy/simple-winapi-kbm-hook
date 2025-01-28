@@ -71,7 +71,6 @@ LRESULT CALLBACK mousehook_proc(int nCode, WPARAM wParam, LPARAM lParam)
                 }
             break;
         }
-        return 0;
     }
     return CallNextHookEx(mouse_hook, nCode, wParam, lParam);
 }

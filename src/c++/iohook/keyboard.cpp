@@ -29,7 +29,6 @@ LRESULT CALLBACK keyboardhook_proc(int nCode, WPARAM wParam, LPARAM lParam)
 				}
 			break;
 		}
-		return 0;
 	}
 	return CallNextHookEx(keyboard_hook, nCode, wParam, lParam);
 }
